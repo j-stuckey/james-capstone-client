@@ -8,7 +8,7 @@ import {
     emailTooLong,
     passwordsMatch
 } from './validators';
-import { registerUser } from '../../actions/users';
+import { registerUser } from '../../actions/register';
 
 class RegistrationForm extends React.Component {
     onSubmit(values) {
