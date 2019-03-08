@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { refreshAuthToken } from '../actions/auth';
 import LoginForm from './LoginForm';
 import Lists from './lists';
-import Dashboard from './dashboard';
+import Dashboard from './Dashboard';
 import Nav from './Nav';
 import expandedList from './expanded-list';
 
