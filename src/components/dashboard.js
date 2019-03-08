@@ -7,9 +7,6 @@ import SearchResult from './search-result';
 import styles from './styles/Dashboard.module.css';
 
 class Dashboard extends React.Component {
-    componentDidMount() {
-        
-    }
 
     render() {
         return (
