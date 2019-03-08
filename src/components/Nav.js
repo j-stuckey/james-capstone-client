@@ -35,8 +35,9 @@ class Nav extends React.Component {
             <nav className={styles.nav}>
                 <Link className={styles.links} activeClassName={styles.active} to="/dashboard">Dashboard</Link>
                 <Link className={styles.links} activeClassName={styles.active} to="/lists">Favorites</Link>
-				{/* { this.props.loggedIn ? logoutButton : null } */}
-                {this.props.loggedIn ? <span>{logoutButton}<BurgerMenu /></span> : null}
+			
+				{logoutButton}
+				<BurgerMenu />
             </nav>
         );
     }
