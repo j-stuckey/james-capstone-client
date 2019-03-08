@@ -4,7 +4,7 @@ import requiresLogin from './requires-login';
 import Nav from './Nav';
 import Search from './search';
 import SearchResult from './search-result';
-import styles from './styles/dashboard.module.css';
+import styles from './styles/Dashboard.module.css';
 
 class Dashboard extends React.Component {
     componentDidMount() {

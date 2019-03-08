@@ -1,0 +1,12 @@
+.background::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    background:rgb(182, 182, 182);
+	background: linear-gradient(130deg, rgb(36, 34, 128), #1e5863)
+}

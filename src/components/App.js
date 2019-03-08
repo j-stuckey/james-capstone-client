@@ -46,7 +46,7 @@ class App extends React.Component {
         return (
             <Router>
                 
-                <div>
+                <div className={styles.background}>
 
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/login" component={LoginForm} />

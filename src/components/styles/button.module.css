@@ -2,8 +2,9 @@
     text-decoration: none;
     color: white;
     background: rgb(233, 3, 3);
-    border-radius: 25px;
-    padding: 10px 30px;
+	border-radius: 5px;
+	box-shadow: 0 3px rgb(189, 189, 189);
+    padding: 6px 20px;
     margin: 20px 0;
     font-size: 1.2em;
     width: 150px;
@@ -11,7 +12,11 @@
 }
 
 .button:hover {
-    background: darkblue;
     color: white;
-    text-decoration: none;
+	text-decoration: none;
+}
+
+.button:active {
+	box-shadow: none;
+	transform: translateY(4px);
 }
