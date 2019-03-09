@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import RegisterButton from './RegisterButton';
 import LoginButton from './LoginButton'
 import styles from './styles/landing-page.module.css';
 
-export default class LandingPage extends React.Component {
+class LandingPage extends React.Component {
     render() {
+		if (this.props.loggedIn) {
+			return <Redirect to="/dashboard" />
+		}
+
         return (
             <div className={styles.div}>
-                
-                <h2 className={styles.title}>Welcome to Movie surfer!</h2>
-                
-                <p>Don't have an account yet?</p>
 
                 <RegisterButton />
 
@@ -20,3 +21,10 @@ export default class LandingPage extends React.Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({
+	loggedIn: state.auth.currentUser !== null
+})
+
+export default connect(mapStateToProps)(LandingPage);
+
