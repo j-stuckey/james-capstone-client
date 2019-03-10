@@ -2,18 +2,18 @@
     background: #455a64;
     display: flex;
     justify-content: flex-end;
-	align-items: center;
-	height: 50px;
+    align-items: center;
+    height: 50px;
 }
 
 .logoutButton {
-	text-decoration: none;
+    text-decoration: none;
     color: white;
     background: rgb(233, 3, 3);
     border: none;
-	border-radius: 5px;
-	margin-left: auto;
-	margin-right: 10px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: 10px;
     padding: 6px 20px;
     transition: 0.25s;
 }
@@ -21,24 +21,23 @@
 .links {
     padding: 15px 20px;
     color: white;
-	text-decoration: none;
+    text-decoration: none;
 }
 
 .links:hover {
-	color: white;
+    color: white;
 }
 
 @media only screen and (max-width: 400px) {
-	.links {
-		display: none;
-	}
+    .links {
+        display: none;
+    }
 
-	.nav {
-		justify-content: flex-start;
-	}
+    .nav {
+        justify-content: flex-start;
+    }
 
-	.logoutButton {
-		margin-left: 10px;
-	}
+    .logoutButton {
+        margin-left: 10px;
+    }
 }
-

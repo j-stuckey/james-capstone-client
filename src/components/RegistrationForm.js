@@ -1,69 +1,111 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import Input from './input';
+import { Link } from 'react-router-dom';
 import {
-    required,
-    atLeastEight,
-    isValidEmail,
-    emailTooLong,
-    passwordsMatch
+	required,
+	passwordsMatch,
+	isValidEmail,
+	length
 } from './validators';
+import Input from './input';
 import { registerUser } from '../actions/users';
+import formStyles from './styles/forms.module.css';
+import styles from './styles/Registration.module.css';
 
-class RegistrationForm extends React.Component {
-    onSubmit(values) {
-        const { username, password, email } = values;
-        const user = { username, password, email };
-        return (
-            this.props
-                .dispatch(registerUser(user))
+const passwordLength = length({ min: 8, max: 72 });
+const usernameLength = length({ min: 3, max: 32 });
 
-                // this.props.dispatch(login(username, password));
-                .then(() => this.props.history.push('/dashboard'))
-        );
-    }
+class Registration extends Component {
+	componentDidMount(){
+		console.log('mounted');
+	}
+	handleFormSubmit = values => {
+		const user = values;
 
-    render() {
-        return (
-                <form
-                    onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
-                >
-                    <Field
-                        name="username"
-                        type="text"
-                        component={Input}
-                        label="Username"
-                        validate={[required, atLeastEight]}
-                    />
-                    <Field
-                        name="email"
-                        type="text"
-                        component={Input}
-                        label="Email"
-                        // // Add an element prop to change the type of input
-                        // element="select"
-                        validate={[required, isValidEmail]}
-                    />
-                    <Field
-                        name="password"
-                        type="password"
-                        component={Input}
-                        label="Password"
-                        validate={[required, atLeastEight, emailTooLong]}
-                    />
-                    <Field
-                        name="confirmPassword"
-                        type="password"
-                        component={Input}
-                        label="Confirm Password"
-                        validate={[required, atLeastEight, emailTooLong, passwordsMatch]}
-                    />
-                    <button type="submit">Sign up</button>
-                </form>
-        );
-    }
+		this.props
+			.dispatch(registerUser(user))
+			.then(() => this.props.history.push('/dashboard'));
+	};
+
+	render() {
+		return (
+			<main className={formStyles.container}>
+				<form
+					className={formStyles.form}
+					onSubmit={this.props.handleSubmit(values =>
+						this.handleFormSubmit(values)
+					)}
+				>
+					<fieldset className={formStyles.fieldset}>
+						<legend className={formStyles.legend}>Register</legend>
+						
+						<Field
+							name="firstName"
+							type="text"
+							// label="First Name"
+							component={Input}
+							placeholder="First Name"
+							validate={[required]}
+						/>
+						<Field
+							name="lastName"
+							type="text"
+							// label="Last Name"
+							component={Input}
+							placeholder="Last Name"
+							validate={[required]}
+						/>
+						<Field
+							name="email"
+							type="text"
+							// label="Last Name"
+							component={Input}
+							placeholder="Email (optional)"
+							validate={[isValidEmail]}
+						/>
+						<Field
+							name="username"
+							type="text"
+							// label="Email"
+							component={Input}
+							placeholder="Username"
+							// // Add an element prop to change the type of input
+							// element="select"
+							validate={[required, usernameLength]}
+						/>
+						<Field
+							name="password"
+							type="password"
+							// label="Password"
+							component={Input}
+							placeholder="Password"
+							validate={[required, passwordLength]}
+						/>
+						<Field
+							name="confirmPassword"
+							type="password"
+							// label="Confirm Password"
+							component={Input}
+							placeholder="Confirm Password"
+							validate={[required, passwordsMatch, passwordLength]}
+						/>
+						<button type="submit" className={styles.button}>
+							Sign up
+						</button>
+					</fieldset>
+				</form>
+
+				<Link to="/login" className={formStyles.registerLink}>
+					Already have an account? Login here.
+				</Link>
+			</main>
+		);
+	}
 }
 
+Registration = connect()(Registration);
+
 export default reduxForm({
-    form: 'registration'
-})(RegistrationForm);
+	form: 'registration'
+})(Registration);

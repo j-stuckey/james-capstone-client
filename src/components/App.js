@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 import { refreshAuthToken } from '../actions/auth';
 import LoginForm from './LoginForm';
 import Lists from './lists';
-import Dashboard from './Dashboard';
+import Dashboard from './dashboard';
 import Nav from './Nav';
 import expandedList from './expanded-list';
 
-import styles from'./styles/app.module.css';
+import styles from './styles/app.module.css';
 import LandingPage from './landing-page';
 
 class App extends React.Component {
@@ -45,19 +45,19 @@ class App extends React.Component {
     render() {
         return (
             <Router>
-                
                 <div className={styles.background}>
-
-					<Route path="/" component={Nav} />
+                    <Route path="/" component={Nav} />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/login" component={LoginForm} />
-                    <Route exact path="/register" component={RegistrationForm} />
+                    <Route
+                        exact
+                        path="/register"
+                        component={RegistrationForm}
+                    />
                     <Route path="/dashboard" component={Dashboard} />
                     <Route exact path="/lists" component={Lists} />
                     <Route exact path="/lists/:id" component={expandedList} />
-                        
                 </div>
-                
             </Router>
         );
     }

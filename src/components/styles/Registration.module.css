@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+}
+
+.button {
+    color: white;
+    background: red;
+    border-radius: 5px;
+    border: none;
+	box-shadow: 0 3px rgb(189, 189, 189);
+    text-transform: uppercase;
+    height: 35px;
+    width: 60%;
+    max-width: 150px;
+    margin: 10px auto 20px;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.button:active {
+    box-shadow: none;
+    transform: translateY(4px);
+}

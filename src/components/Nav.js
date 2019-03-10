@@ -22,11 +22,6 @@ class Nav extends React.Component {
     }
 
     render() {
-        if (!this.props.loggedIn) {
-            return <Redirect to="/" />;
-        }
-        // Only renders the log out button if we're logged in
-
         const logoutButton = (
             <button onClick={this.logout} className={`${styles.logoutButton}`}>Log Out</button>
         );
