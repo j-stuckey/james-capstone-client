@@ -40,28 +40,20 @@ class SearchResult extends React.Component {
                     key={index}
                     onSubmit={e => this.addMovie(e, movie)}
                 >
-                    {/* <ul className="search-result"> */}
                     <span>{movie.Title}</span>
-
-                    {/* <li> */}
                     <img src={movie.Poster} alt="" width="200" />
-                    {/* </li> */}
-                    {/* <li> */}
+
                     <select name="listOption">{lists}</select>
-                    {/* </li> */}
-                    {/* <li> */}
+
                     <button className="add-movie" type="submit">
                         Add movie to List
                     </button>
-                    {/* </li> */}
-                    {/* </ul> */}
                 </form>
             );
         });
 
         return (
             <div>
-                {/* <button onClick={() => this.clearSearch()}>Clear Search</button> */}
                 <ul className="result-list">{movies}</ul>
             </div>
         );

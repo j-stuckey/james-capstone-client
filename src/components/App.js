@@ -46,7 +46,7 @@ class App extends React.Component {
         return (
             <Router>
                 <div className={styles.background}>
-					<Route path="/" component={Nav} />
+					<Route path="/" component={this.props.loggedIn ? Nav : null } />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/login" component={LoginForm} />
                     <Route

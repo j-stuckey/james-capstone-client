@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { createList } from '../actions/add';
 import { clearState } from '../actions/search';
 
@@ -23,27 +23,32 @@ class Lists extends React.Component {
                     <button key={index}>{list.title}</button>
                 </Link>
             );
-        });
-
-        return (
-            <section>
-                <div>
-                    <form onSubmit={e => this.submitList(e)}>
-                        <label htmlFor="">Create list:</label>
-                        <input type="text" name="newList" />
-                        <button>Create</button>
-                    </form>
-                    <p>Lists</p>
-                    <ul className="movie-lists">{lists}</ul>
-                </div>
-            </section>
-        );
+		});
+		
+        if (this.props.loggedIn) {
+            return (
+                <section>
+                    <div>
+                        <form onSubmit={e => this.submitList(e)}>
+                            <label htmlFor="">Create list:</label>
+                            <input type="text" name="newList" />
+                            <button>Create</button>
+                        </form>
+                        <p>Lists</p>
+                        <ul className="movie-lists">{lists}</ul>
+                    </div>
+                </section>
+            );
+        } else {
+			return <Redirect to="/" />
+		}
     }
 }
 
 const mapStateToProps = state => {
     return {
-        lists: state.listData.data
+        lists: state.listData.data,
+        loggedIn: state.auth.loggedIn
     };
 };
 

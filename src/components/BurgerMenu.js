@@ -36,7 +36,7 @@ export class BurgerMenu extends React.Component {
 				</button>
 
 				<Modal className={this.state.show ? styles.modal : null}>
-					<MenuButtons
+					<div
 						className={
 							this.state.show
 								? styles.modalContent
@@ -46,18 +46,12 @@ export class BurgerMenu extends React.Component {
 					>
 						<Link className={styles.links} to="/dashboard">Dashboard</Link>
 						<Link className={styles.links} to="/lists">Favorites</Link>
-					</MenuButtons>
+					</div>
 				</Modal>
 			</span>
 		);
 	}
 }
-
-export const MenuButtons = (props) => {
-	return <div className={props.className} onClick={(e) => props.onClick()}>
-		{props.children}
-	</div>;
-};
 
 const Modal = props => {
 	return <div className={props.className}>{props.children}</div>;

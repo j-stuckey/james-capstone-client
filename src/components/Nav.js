@@ -10,34 +10,27 @@ import styles from './styles/Nav.module.css';
 import buttonStyles from './styles/button.module.css';
 
 class Nav extends React.Component {
-	constructor(props) {
-		super(props);
+    constructor(props) {
+        super(props);
 
-		this.logout = this.logout.bind(this);
-	}
-
-    logout = ()  => {
-        this.props.dispatch(clearAuth());
-        clearAuthToken();
+        this.logout = this.logout.bind(this);
     }
 
+    logout = () => {
+        this.props.dispatch(clearAuth());
+        clearAuthToken();
+    };
+
     render() {
-        const logoutButton = (
-            <button onClick={this.logout} className={`${styles.logoutButton}`}>Log Out</button>
-		);
-		
-		if (this.props.loggedIn) {
-			return (
-				<nav className={styles.nav}>
-					<Link className={styles.links} to="/dashboard">Dashboard</Link>
-					<Link className={styles.links} to="/lists">Favorites</Link>
-				
-					{logoutButton}
-					<BurgerMenu />
-				</nav>
-			);
-		} 
-		return null
+
+        return (
+            <nav className={styles.nav}>
+                <Link className={styles.links} to="/dashboard">Dashboard</Link>
+                <Link className={styles.links} to="/lists">Favorites</Link>
+				<button onClick={this.logout} className={`${styles.logoutButton}`}>Log Out</button>
+                <BurgerMenu />
+            </nav>
+        );
     }
 }
 const mapStateToProps = state => {
