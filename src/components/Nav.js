@@ -24,17 +24,20 @@ class Nav extends React.Component {
     render() {
         const logoutButton = (
             <button onClick={this.logout} className={`${styles.logoutButton}`}>Log Out</button>
-        );
-
-        return (
-            <nav className={styles.nav}>
-                <Link className={styles.links} activeClassName={styles.active} to="/dashboard">Dashboard</Link>
-                <Link className={styles.links} activeClassName={styles.active} to="/lists">Favorites</Link>
-			
-				{logoutButton}
-				<BurgerMenu />
-            </nav>
-        );
+		);
+		
+		if (this.props.loggedIn) {
+			return (
+				<nav className={styles.nav}>
+					<Link className={styles.links} to="/dashboard">Dashboard</Link>
+					<Link className={styles.links} to="/lists">Favorites</Link>
+				
+					{logoutButton}
+					<BurgerMenu />
+				</nav>
+			);
+		} 
+		return null
     }
 }
 const mapStateToProps = state => {

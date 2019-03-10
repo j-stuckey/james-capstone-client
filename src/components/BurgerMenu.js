@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import styles from './styles/BurgerMenu.module.css';
-// import { Menu as MenuButtons } from './Menu';
 
 export class BurgerMenu extends React.Component {
 	constructor(props) {
@@ -43,9 +42,10 @@ export class BurgerMenu extends React.Component {
 								? styles.modalContent
 								: styles.modalContentHide
 						}
+						onClick={this.handleClick}
 					>
-						                <Link className={styles.links} activeClassName={styles.active} to="/dashboard">Dashboard</Link>
-                <Link className={styles.links} activeClassName={styles.active} to="/lists">Favorites</Link>
+						<Link className={styles.links} to="/dashboard">Dashboard</Link>
+						<Link className={styles.links} to="/lists">Favorites</Link>
 					</MenuButtons>
 				</Modal>
 			</span>
@@ -54,7 +54,7 @@ export class BurgerMenu extends React.Component {
 }
 
 export const MenuButtons = (props) => {
-	return <div className={props.className}>
+	return <div className={props.className} onClick={(e) => props.onClick()}>
 		{props.children}
 	</div>;
 };

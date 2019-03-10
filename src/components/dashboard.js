@@ -10,7 +10,6 @@ class Dashboard extends React.Component {
     render() {
         return (
             <section className={styles.container}>
-				<Nav />
                 <Search />
                 <SearchResult />
             </section>
