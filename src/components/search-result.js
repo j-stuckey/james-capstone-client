@@ -31,32 +31,9 @@ class SearchResult extends React.Component {
                     {list.title}
                 </option>
             );
-        });
-
-        const movies = this.props.movies.map((movie, index) => {
-            return (
-                <form
-                    className="movie-item"
-                    key={index}
-                    onSubmit={e => this.addMovie(e, movie)}
-                >
-                    <span>{movie.Title}</span>
-                    <img src={movie.Poster} alt="" width="200" />
-
-                    <select name="listOption">{lists}</select>
-
-                    <button className="add-movie" type="submit">
-                        Add movie to List
-                    </button>
-                </form>
-            );
-        });
-
-        return (
-            <div>
-                <ul className="result-list">{movies}</ul>
-            </div>
-        );
+		});
+		
+        return null;
     }
 }
 const mapStateToProps = state => {

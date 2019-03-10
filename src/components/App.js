@@ -1,6 +1,6 @@
 import React from 'react';
 import RegistrationForm from './RegistrationForm';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import { Route } from 'react-router';
 import { connect } from 'react-redux';
 import { refreshAuthToken } from '../actions/auth';
@@ -46,7 +46,10 @@ class App extends React.Component {
         return (
             <Router>
                 <div className={styles.background}>
-					<Route path="/" component={this.props.loggedIn ? Nav : null } />
+                    <Route
+                        path="/"
+                        component={this.props.loggedIn ? Nav : null}
+                    />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/login" component={LoginForm} />
                     <Route
@@ -54,7 +57,14 @@ class App extends React.Component {
                         path="/register"
                         component={RegistrationForm}
                     />
-                    <Route path="/dashboard" component={Dashboard} />
+                    <Route
+                        path="/dashboard"
+                        component={
+                            this.props.loggedIn
+                                ? Dashboard
+                                : () => <Redirect to="/" />
+                        }
+                    />
                     <Route exact path="/lists" component={Lists} />
                     <Route exact path="/lists/:id" component={expandedList} />
                 </div>
